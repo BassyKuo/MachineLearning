@@ -20,12 +20,20 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
+	%	  X : m x (n+1)
+	% theta	: (n+1) x 1
+	%	  y : m x 1
+	%	  h : m x 1
+	%  grad : (n+1) x 1		( gard(1) ~ grad(n+1) )
 
+	h = sigmoid( X * theta );	% h: hypothesis
+	J_array = (-1) / m * ( y.*log(h) + (1-y).*log(1-h) );
+	J = sum(J_array);	% J: cost
 
-
-
-
-
+	grad = ( sum( ( h - y ) .* X ) / m )';
+	%for j = 1:n+1
+	%	gradient(j) = sum( ( h-y ) .* X(:,j) ) / m
+	%endfor
 
 % =============================================================
 
