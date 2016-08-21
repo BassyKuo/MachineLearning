@@ -28,12 +28,9 @@ grad = zeros(size(theta));
 	J = sum(J_array) + ( lambda / ( 2 * m ) * sum(theta.^2) );	% J: cost
 
 	grad = ( sum( ( h - y ) .* X ) / m )';
-	theta(1) = 0;
-	grad += theta .* ( lambda / m );
-	
-
-
-
+	theta_ = zeros(size(theta));
+	theta_(2:end,:) = theta(2:end,:);
+	grad += lamba / m * theta;
 
 % =============================================================
 
