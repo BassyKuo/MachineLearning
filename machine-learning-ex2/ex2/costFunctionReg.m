@@ -25,17 +25,13 @@ grad = zeros(size(theta));
 
 	h = sigmoid( X * theta );	% h: hypothesis
 	J_array = (-1) / m * ( y.*log(h) + (1-y).*log(1-h) );
-	J = sum(J_array) + ( lambda / ( 2 * m ) * sum(theta.^2) );	% J: cost
+	J = sum(J_array) + ( lambda / ( 2 * m ) * sum(theta(2:end).^2) );	% J: cost
 
-	%grad = ( sum( ( h - y ) .* X ) / m )';
-	%theta_ = zeros(size(theta));
-	%theta_(2:end,:) = theta(2:end,:);
-	%grad += lambda / m * theta_;
-	grad(1) = sum( ( h - y ) .* X(:,1) ) / m;
-	grad(2:end) = (sum( ( h - y ) .* X(:,2:end) ))' / m + lambda * theta(2:end) / m; 
-%	theta_ = theta;
-%	theta_(1) = 0;
-%	grad = (sum( (h-y) .* X ) / m)' + lambda / m * theta_;
+	%grad(1) = sum( ( h - y ) .* X(:,1) ) / m;
+	%grad(2:end) = (sum( ( h - y ) .* X(:,2:end) ))' / m + lambda * theta(2:end) / m; 
+	theta_ = theta;
+	theta_(1) = 0;
+	grad = (sum( (h-y) .* X ) / m)' + lambda / m * theta_;
 
 % =============================================================
 
