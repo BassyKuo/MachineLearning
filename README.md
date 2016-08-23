@@ -1,2 +1,2 @@
 # MachineLearning
-The Octave code for [Coursera:ML](https://www.coursera.org/learn/machine-learning/) by Andrew Ng. assignments.
+The Octave code of [Coursera:ML](https://www.coursera.org/learn/machine-learning/) assignments by Andrew Ng.
