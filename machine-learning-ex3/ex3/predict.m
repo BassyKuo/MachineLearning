@@ -28,11 +28,12 @@ p = zeros(size(X, 1), 1);
 	% Theta2 :	num_labels x (j+1)
 	%	   p :	m x 1 (value between 1~10)
 	%	   y :	m x 1 (value between 1~10)
+
 	a2 = sigmoid( X * Theta1' );	% a2 : m x j
-	a2 = [ones(size(a2,1),1) a2];		% a2 : m x (j+1)
+	a2 = [ones(size(a2,1),1) a2];	% a2 : m x (j+1)
 	a3 = sigmoid( a2 * Theta2' );	% a3 : m x num_labels
 	% h(x) = a3, like this:
-	% [   0   0   0   0.75   0   0   0   0   0   0.15 ]
+	% [   0   0   0   0.75   0   0   0   0   0   0.15 ]=> row sum: approximate 1
 	% [  0.6  0   0   0.15  0.05 0  0.2  0   0    0   ]
 	% [  ...  ...  ...  ...  ...  ...  ...  ...  ...  ]
 	% [  ...  ...  ...  ...  ...  ...  ...  ...  ...  ]
