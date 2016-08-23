@@ -36,13 +36,22 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
+	%	  X : m x (n+1)
+	% theta	: (n+1) x 1
+	%	  y : m x 1
+	%	  h : m x 1
+	%  grad : (n+1) x 1		( gard(1) ~ grad(n+1) )
 
+	h = sigmoid( X * theta );	% h: hypothesis
+	J = ( y' * log(h) + (1-y)' * log(1-h) ) / (-m) + theta(2:end,:)' * theta(2:end,:) * lambda / ( 2 * m );	% J: cost
+	% i.e.
+	%J_array = ( y .* log(h) + ( 1 - y ) .* log(1-h) / (-m);
+	%J = sum(J_array) + ( lambda / ( 2 * m ) * sum(theta(2:end) .^ 2) );	% J: cost value
 
-
-
-
-
-
+	temp = theta;
+	temp(1) = 0;
+	grad = ( X' * ( h - y ) + lambda * temp) / m;
+	% i.e. grad = ( (sum( ( h - y ) .* X ) )' + lambda * temp) / m;
 
 
 % =============================================================
